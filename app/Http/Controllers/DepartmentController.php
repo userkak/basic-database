@@ -12,14 +12,8 @@ class DepartmentController extends Controller
     //
     public function index(){
 
-        //$departments = Department::all();
-
-
-        //$departments = Department::paginate(5);
-
-        $departments=DB::table('departments')
-        ->join('users','departments.user_id','users.id')
-        ->select('departments.*','users.name')->paginate(5);
+        
+        $departments=Department::paginate(5);
 
         return view('admin.department.index',compact('departments'));
     }
@@ -74,5 +68,11 @@ class DepartmentController extends Controller
         ]);
 
         return redirect()->route('department')->with('success','บันทึกข้อมูลเรียบร้อย');
+    }
+    public function softdelete($id){
+        //dd($id);
+        $delete = Department::find($id)->delete();
+
+        return redirect()->back()->with('success','ลบข้อมูลเรียบร้อย');
     }
 }
