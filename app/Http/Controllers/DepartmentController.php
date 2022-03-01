@@ -13,9 +13,10 @@ class DepartmentController extends Controller
     public function index(){
 
         
-        $departments=Department::paginate(5);
+        $departments=Department::paginate(2,['*'],'departments');
+        $trashDepartments = Department::onlyTrashed()->paginate(3,['*'],'trashDepartments');
 
-        return view('admin.department.index',compact('departments'));
+        return view('admin.department.index',compact('departments','trashDepartments'));
     }
 
     public function store(Request $request){
