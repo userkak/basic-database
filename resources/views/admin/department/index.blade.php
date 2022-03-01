@@ -61,9 +61,10 @@
                     </div>
 
 
+                    @if(count($trashDepartments)>0)
+                     <!-- table 2 -->
 
-                    <!-- table 2 -->
-                    <div class="card m-3">
+                     <div class="card m-3">
                        <div class="card-header text-white bg-primary">ถังขยะ</div>
 
                        <table class="table table-bordered">
@@ -107,6 +108,8 @@
 
                     </div>
                     <!-- table 2 -->
+                    @endif
+                   
                                      
                </div>
                <div class="col-md-4">
