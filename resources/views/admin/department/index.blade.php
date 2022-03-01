@@ -56,9 +56,57 @@
                         </tbody>
                         </table>
 
-                        {{$departments->links()}}
+                        {{$departments->appends(['trashDepartments' => $trashDepartments->currentPage()])->links()}}
 
-                    </div>                  
+                    </div>
+
+
+
+                    <!-- table 2 -->
+                    <div class="card">
+                       <div class="card-header text-white bg-primary">ถังขยะ</div>
+
+                       <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                            <th scope="col">ลำดับ</th>
+                            <th scope="col">ชื่อแผนก</th>
+                            <th scope="col">UserID</th>    
+                            <th scope="col">Created_at</th>       
+                            <th scope="col">กู้คืนข้อมูล</th>              
+                            <th scope="col">ลบถาวร</th>                  
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            @foreach($trashDepartments as $row)
+                            <tr>
+                            <th>{{$trashDepartments->firstItem()+$loop->index}}</th>
+                            <td>{{$row->department_name}}</td>
+                            <td>{{$row->user_id}}</td>
+                            <td>
+                                @if($row->created_at == NULL)
+                                    ไม่ถูกนิยาม
+                                @else
+                                     {{Carbon\Carbon::parse($row->created_at)->diffForHumans()}}
+                                @endif                                
+                            </td>
+                            <td>
+                                <a href="{{url('/department/edit/'.$row->id)}}" class="btn btn-primary">กู้คืนข้อมูล</a>
+                            </td>
+                            <td>
+                                <a href="{{url('/department/softdelete/'.$row->id)}}" class="btn btn-danger">ลบข้อมูลถาวร</a>
+                            </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        </table>
+                        {{$trashDepartments->appends(['departments' => $departments->currentPage()])->links()}}
+                     
+
+                    </div>
+                    <!-- table 2 -->
+                                     
                </div>
                <div class="col-md-4">
                <div class="card">
