@@ -49,7 +49,7 @@
                                 <a href="{{url('/department/edit/'.$row->id)}}" class="btn btn-primary">แก้ไข</a>
                             </td>
                             <td>
-                                <a href="{{url('/department/softdelete/'.$row->id)}}" class="btn btn-danger">ลบข้อมูล</a>
+                                <a href="{{url('/department/softdelete/'.$row->id)}}" class="btn btn-warning">ลบข้อมูล</a>
                             </td>
                             </tr>
                             @endforeach
@@ -95,7 +95,7 @@
                                 <a href="{{url('/department/restore/'.$row->id)}}" class="btn btn-primary">กู้คืนข้อมูล</a>
                             </td>
                             <td>
-                                <a href="{{url('/department/softdelete/'.$row->id)}}" class="btn btn-danger">ลบข้อมูลถาวร</a>
+                                <a href="{{url('/department/delete/'.$row->id)}}" class="btn btn-danger">ลบข้อมูลถาวร</a>
                             </td>
                             </tr>
                             @endforeach
