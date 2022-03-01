@@ -71,7 +71,7 @@
                <div class="card">
                        <div class="card-header">แบบฟอร์มบริการ</div>
                        <div class="card-body">
-                           <form action="" method="post" enctype="multipart/form-data">
+                           <form action="{{route('addService')}}" method="post" enctype="multipart/form-data">
                                @csrf
                                <div class="form-group">
                                 <label for="service_name">ชื่อบริการ</label>
