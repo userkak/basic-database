@@ -29,7 +29,22 @@ class ServiceController extends Controller
     );
 
 
+    //การเข้ารหัสรูปภาพ
+    $service_image = $request->file('service_image');
+
+    //generate picture
+    $name_gen=hexdec(uniqid());
+
+    //ดึงนามสกุลไฟล์ภาพ
+    $img_ext = strtolower($service_image->getClientOriginalExtension());
     
+    $img_name = $name_gen.'.'.$img_ext;
+    dd($img_name);
+    
+    //บันทึกข้อมูล
+
+
+  // dd($service_image);
 /*
         $data = array();
         $data["department_name"] = $request->department_name;

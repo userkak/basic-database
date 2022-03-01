@@ -18,7 +18,7 @@
                         <div class="alert alert-success">{{session('success')}}</div>
                    @endif
                     <div class="card m-3">
-                       <div class="card-header text-white bg-primary">ตารางข้อมูลบริการ]</div>
+                       <div class="card-header text-white bg-primary">ตารางข้อมูลบริการ</div>
 
                        <table class="table table-bordered ">
                         <thead>
