@@ -17,10 +17,10 @@
                        
                         <div class="alert alert-success">{{session('success')}}</div>
                    @endif
-                    <div class="card">
+                    <div class="card m-3">
                        <div class="card-header text-white bg-primary">ตารางข้อมูลแผนก</div>
 
-                       <table class="table table-bordered">
+                       <table class="table table-bordered ">
                         <thead>
                             <tr>
                             <th scope="col">ลำดับ</th>
@@ -63,7 +63,7 @@
 
 
                     <!-- table 2 -->
-                    <div class="card">
+                    <div class="card m-3">
                        <div class="card-header text-white bg-primary">ถังขยะ</div>
 
                        <table class="table table-bordered">
@@ -92,7 +92,7 @@
                                 @endif                                
                             </td>
                             <td>
-                                <a href="{{url('/department/edit/'.$row->id)}}" class="btn btn-primary">กู้คืนข้อมูล</a>
+                                <a href="{{url('/department/restore/'.$row->id)}}" class="btn btn-primary">กู้คืนข้อมูล</a>
                             </td>
                             <td>
                                 <a href="{{url('/department/softdelete/'.$row->id)}}" class="btn btn-danger">ลบข้อมูลถาวร</a>
@@ -102,6 +102,7 @@
                         </tbody>
                         </table>
                         {{$trashDepartments->appends(['departments' => $departments->currentPage()])->links()}}
+                        
                      
 
                     </div>
