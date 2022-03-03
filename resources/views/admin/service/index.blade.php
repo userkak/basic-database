@@ -36,7 +36,9 @@
                             @foreach($services as $row)
                             <tr>
                             <th>{{$services->firstItem()+$loop->index}}</th>
-                            <td>{{$row->service_image}}</td>
+                            <!--<td>{{$row->service_image}}</td>-->
+
+                            <td><img src="{{asset($row->service_image)}}" alt="" width="70px" height="100px"></td>
                             <td>{{$row->service_name}}</td>
                             <td>
                                 @if($row->created_at == NULL)
