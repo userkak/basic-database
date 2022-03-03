@@ -17,6 +17,12 @@ class ServiceController extends Controller
 
         return view('admin.service.index',compact('services'));
     }
+    public function edit($id){
+        //dd($id);
+        $service = Service::find($id);
+        return view('admin.service.edit',compact('service'));
+        //dd($department->department_name);
+    }
     public function store(Request $request){
         $request->validate([
             'service_name'=>'required|unique:services|max:255',
