@@ -48,10 +48,10 @@
                                 @endif                                
                             </td>
                             <td>
-                                <a href="{{url('/department/edit/'.$row->id)}}" class="btn btn-primary">แก้ไข</a>
+                                <a href="{{url('/service/edit/'.$row->id)}}" class="btn btn-primary">แก้ไข</a>
                             </td>
                             <td>
-                                <a href="{{url('/department/softdelete/'.$row->id)}}" class="btn btn-warning">ลบข้อมูล</a>
+                                <a href="{{url('/service/delete/'.$row->id)}}" class="btn btn-warning">ลบข้อมูล</a>
                             </td>
                             </tr>
                             @endforeach
