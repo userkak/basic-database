@@ -127,4 +127,15 @@ class ServiceController extends Controller
 
     return redirect()->back()->with('success','บันทึกข้อมูลเรียบร้อย');
     }
+
+    public function delete($id){
+        //ลบภาพ
+        $img = Service::find($id)->service_image;
+       // dd($img);
+        unlink($img);
+
+        //ลบข้อมูลจากฐาน
+        $delete=Service::find($id)->delete();
+        return redirect()->back()->with('success','ลบข้อมูลถาวรเรียบร้อย');
+    }
 }
