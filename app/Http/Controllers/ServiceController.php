@@ -43,10 +43,43 @@ class ServiceController extends Controller
          //อัพเดตภาพและชื่อ
 
          if($service_image){
-             dd("มีการอัพเดตภาพ");
+                //generate picture
+                $name_gen=hexdec(uniqid());
+
+                //ดึงนามสกุลไฟล์ภาพ
+                $img_ext = strtolower($service_image->getClientOriginalExtension());
+                
+                $img_name = $name_gen.'.'.$img_ext;
+                
+                
+                //อัพโหลดและอัพเดตข้อมูล
+                $upload_location = 'image/services/';
+                $full_path = $upload_location.$img_name;
+                //dd($full_path);
+
+               
+                //อัพเดตข้อมูล
+                Service::find($id)->update([
+                    'service_name'=>$request->service_name,
+                    'service_image'=>$full_path,
+                    
+                ]);
+
+                 //ลบภาพเก่าและอัพภาพใหม่แทนที่
+                 $old_image = $request->old_image;
+                 unlink($old_image);
+                 $service_image->move($upload_location,$img_name);
+
+                
+                return redirect()->route('services')->with('success','อัพเดตภาพเรียบร้อย');
          }else{
              //อัพเดตชื่ออย่างเดียว
-             dd("มีการอัพเดตชื่อ");
+             Service::find($id)->update([
+                'service_name'=>$request->service_name,
+               
+                
+            ]);
+            return redirect()->route('services')->with('success','อัพเดตชื่อบริการเรียบร้อย');
          }
          
 
