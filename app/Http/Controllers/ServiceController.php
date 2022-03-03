@@ -23,6 +23,37 @@ class ServiceController extends Controller
         return view('admin.service.edit',compact('service'));
         //dd($department->department_name);
     }
+
+
+    public function update(Request $request,$id){
+        $request->validate([
+            'service_name'=>'required|max:255',
+            //'service_image'=>'mimes:jpg,jpeg,png'
+        ],
+        [
+            'service_name.required'=>"กรุณาป้อนชื่อบริการด้วย",
+            'service_name.max'=>"ห้ามป้อนเกิน 255 ตัวอักษร",
+        ]
+        );
+         
+
+        //การเข้ารหัสรูปภาพ
+         $service_image = $request->file('service_image');
+
+         //อัพเดตภาพและชื่อ
+
+         if($service_image){
+             dd("มีการอัพเดตภาพ");
+         }else{
+             //อัพเดตชื่ออย่างเดียว
+             dd("มีการอัพเดตชื่อ");
+         }
+         
+
+         
+    }
+
+
     public function store(Request $request){
         $request->validate([
             'service_name'=>'required|unique:services|max:255',
