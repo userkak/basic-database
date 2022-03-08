@@ -14,6 +14,10 @@ class DepartmentController extends Controller
 
         
         $departments=Department::paginate(2,['*'],'departments');
+       /*$departments=DB::table('departments')
+       ->join('users','departments.user_id','users.id')
+       ->select('departments.*','users.name')->paginate(2,['*'],'departments');*/
+
         $trashDepartments = Department::onlyTrashed()->paginate(3,['*'],'trashDepartments');
 
         return view('admin.department.index',compact('departments','trashDepartments'));
