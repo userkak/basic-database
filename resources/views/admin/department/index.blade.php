@@ -37,7 +37,7 @@
                             <tr>
                             <th>{{$departments->firstItem()+$loop->index}}</th>
                             <td>{{$row->department_name}}</td>
-                            <td>{{$row->user_id}}</td>
+                            <td>{{$row->user->name}}</td>
                             <td>
                                 @if($row->created_at == NULL)
                                     ไม่ถูกนิยาม
@@ -84,7 +84,7 @@
                             <tr>
                             <th>{{$trashDepartments->firstItem()+$loop->index}}</th>
                             <td>{{$row->department_name}}</td>
-                            <td>{{$row->user_id}}</td>
+                            <td>{{$row->user->name}}</td>
                             <td>
                                 @if($row->created_at == NULL)
                                     ไม่ถูกนิยาม
